@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Todo from "./Todo";
 
@@ -8,6 +8,10 @@ const initialState = ["Clean Kitchen", "Wipe Floor"];
 function App() {
   const [todos, setTodos] = useState(initialState);
   const [inputValue, setInputValue] = useState("");
+
+  useEffect(() => {
+     localStorage.setItem('todos', todos);
+  }, [todos])
   return (
     <div>
       <h1>To-do List</h1>
