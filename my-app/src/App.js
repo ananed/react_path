@@ -2,9 +2,15 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Todo from "./Todo";
 
-// initial value
-const initialState = ["Clean Kitchen", "Wipe Floor"];
 
+function getTodoFromLocalStorage(){
+  let todosString = localStorage.getItem('todos');
+  if (todosString.length > 0){
+    return todosString.split(",");
+  }else{
+    return [];
+  }
+}
 function App() {
   const [todos, setTodos] = useState(initialState);
   const [inputValue, setInputValue] = useState("");
